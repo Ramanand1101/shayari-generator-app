@@ -9,15 +9,12 @@ app.use(express.json());
 
 // Set up OpenAI configuration
 const openaiConfig = new Configuration({
-    apiKey: process.env.YOUR_API_KEY,
+    apiKey: process.env.OPEN_AI_KEY,
 });
 const openai = new OpenAIApi(openaiConfig);
 const history = []
 // Endpoint to generate a joke based on the provided keyword
-app.get("/",(req,res)=>{
-    res.send("Home-page")
-})
-app.get('/sayari', async (req, res) => {
+app.get('/sayeri', async (req, res) => {
     const user_input = `write a sayeri about ${req.query.keyword} ,in the word range between 20 to 50`
     const messages = [];
     for (const [input_text, completion_text] of history) {
